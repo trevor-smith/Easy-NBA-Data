@@ -38,12 +38,9 @@ class HistoricalData():
                 season.  Ex: '2014-15' is the 2014/2015 season.
         """
 
-        print season
-
         player_ids_url = 'http://stats.nba.com/stats/commonallplayers' + \
             '?IsOnlyCurrentSeason=1&LeagueID=00&Season=%s' % (season)
 
-        print player_ids_url
         response = requests.get(player_ids_url, headers=AGENT_DETAILS)
         response.raise_for_status()
 
@@ -71,15 +68,15 @@ class HistoricalData():
                 % (v, season)
                 print 'extracting data for: ' + str(k) + ' ' + str(v)
                 print game_logs_url
-                # response = requests.get(game_logs_url, headers=AGENT_DETAILS)
-                # results = response.json()['resultSets'][0]['rowSet']
-                # try:
-                    # for game in results:
-                        # data.append(game)
-                # except:
-                    # print 'bad request'
+                response = requests.get(game_logs_url, headers=AGENT_DETAILS)
+                results = response.json()['resultSets'][0]['rowSet']
+                try:
+                    for game in results:
+                        data.append(game)
+                except:
+                    print 'bad request'
 
-            # return data
+            return data
 
 if __name__ == "__main__":
     main()
