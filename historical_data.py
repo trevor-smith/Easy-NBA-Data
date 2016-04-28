@@ -1,3 +1,4 @@
+import sys
 import requests
 import pandas as pd
 import numpy as np
@@ -77,6 +78,9 @@ class HistoricalData():
                     print 'bad request'
 
             return data
+            
+def main():
+    pass
 
 if __name__ == "__main__":
     main()
