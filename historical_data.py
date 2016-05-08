@@ -80,7 +80,7 @@ class HistoricalData():
                     print 'bad request'
 
             return data
-            
+
 def main():
     pass
 
